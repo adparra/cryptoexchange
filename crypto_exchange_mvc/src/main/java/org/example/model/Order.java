@@ -9,15 +9,22 @@ public abstract class Order {
     protected String cryptoSymbol;
     protected BigDecimal amount;
     protected BigDecimal price;
-    protected LocalDateTime dateTime;
+    protected LocalDateTime creationTime;
 
     public Order(String id, String userId, String cryptoSymbol, BigDecimal amount,
-                 BigDecimal price, LocalDateTime dateTime) {
-        this.id = id;
+                 BigDecimal price) {
         this.userId = userId;
         this.cryptoSymbol = cryptoSymbol;
         this.amount = amount;
         this.price = price;
-        this.dateTime = dateTime;
+        this.creationTime = LocalDateTime.now();
     }
+
+    public String getCryptoSymbol() {return cryptoSymbol;}
+
+    public BigDecimal getAmount() {return amount;}
+
+    public BigDecimal getPrice() {return price;}
+
+    public LocalDateTime getCreationTime() {return creationTime;}
 }

@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 public class Transaction {
     protected String id;
     protected String userId;
-    protected String cryptoSymbol;
+    protected CryptoSymbol cryptoSymbol;
     protected BigDecimal amount;
     protected BigDecimal price;
     protected TransactionType type;
@@ -13,5 +13,26 @@ public class Transaction {
 
     public enum TransactionType{
         BUY,SELL;
+    }
+
+    public Transaction(String id, String userId, CryptoSymbol cryptoSymbol,
+                       BigDecimal amount, BigDecimal price, TransactionType type) {
+        this.id = id;
+        this.userId = userId;
+        this.cryptoSymbol = cryptoSymbol;
+        this.amount = amount;
+        this.price = price;
+        this.type = type;
+    }
+
+    @Override
+    public String toString() {
+        return "Transaction{" +
+                "id='" + id + '\'' +
+                ", Cryptocurrency=" + cryptoSymbol +
+                ", amount=" + amount +
+                ", price=" + price +
+                ", type=" + type +
+                '}';
     }
 }

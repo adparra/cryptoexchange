@@ -4,10 +4,10 @@ import java.math.BigDecimal;
 
 public class Cryptocurrency {
     protected String name;
-    protected String symbol;
+    protected CryptoSymbol symbol;
     protected BigDecimal currentPrice;
 
-    public Cryptocurrency(String name, String symbol, BigDecimal currentPrice) {
+    public Cryptocurrency(String name, CryptoSymbol symbol, BigDecimal currentPrice) {
         this.name = name;
         this.symbol = symbol;
         this.currentPrice = currentPrice;
