@@ -3,16 +3,16 @@ package org.example.model;
 import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public class Wallet {
-    protected String id;
-    protected String userId;
+    private static final AtomicInteger _ID = new AtomicInteger(0);
+    protected final int id;
     protected BigDecimal fiatBalance;
     protected Map<CryptoSymbol,BigDecimal> cryptoBalance;
 
-    public Wallet(String id,String userId) {
-        this.id = id;
-        this.userId = userId;
+    public Wallet() {
+        this.id = _ID.incrementAndGet();
         this.fiatBalance = BigDecimal.ZERO;
         this.cryptoBalance = new HashMap<>();
     }
@@ -23,7 +23,7 @@ public class Wallet {
 
     public BigDecimal getFiatBalance() {return fiatBalance;}
 
-    public String getId() {return id;}
+    public String getId() {return String.valueOf(id);}
 
     public void deposit(BigDecimal amount) {
         this.fiatBalance = fiatBalance.add(amount);

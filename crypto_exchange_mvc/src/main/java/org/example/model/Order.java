@@ -2,18 +2,21 @@ package org.example.model;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.concurrent.atomic.AtomicInteger;
 
 public abstract class Order {
-    protected String id;
-    protected String userId;
+    private static final AtomicInteger _ID = new AtomicInteger(0);
+    protected final int id;
+    protected User user;
     protected String cryptoSymbol;
     protected BigDecimal amount;
     protected BigDecimal price;
     protected LocalDateTime creationTime;
 
-    public Order(String id, String userId, String cryptoSymbol, BigDecimal amount,
+    public Order(User user, String cryptoSymbol, BigDecimal amount,
                  BigDecimal price) {
-        this.userId = userId;
+        this.id = _ID.incrementAndGet();
+        this.user = user;
         this.cryptoSymbol = cryptoSymbol;
         this.amount = amount;
         this.price = price;

@@ -25,29 +25,45 @@ public class OrderBook {
 
     public void addBuyOrder(BuyOrder order){
         buyOrders.offer(order);
-        matchOrders();
     }
     public void addSellOrder(SellOrder order){
         sellOrders.offer(order);
-        matchOrders();
+    }
+    public BuyOrder peekBuyOrder(){
+        return buyOrders.peek();
+    }
+    public SellOrder peekSellOrder(){
+        return sellOrders.peek();
+    }
+    public BuyOrder pollBuyOrder(){
+        return buyOrders.poll();
+    }
+    public SellOrder pollSellOrder(){
+        return sellOrders.poll();
+    }
+    public boolean hasBuyOrders(){
+        return !buyOrders.isEmpty();
+    }
+    public boolean hasSellOrders(){
+        return !sellOrders.isEmpty();
     }
 
-    private void matchOrders(){
-        while(!buyOrders.isEmpty() && !sellOrders.isEmpty()){
-            BuyOrder buyOrder = buyOrders.peek();
-            SellOrder sellOrder = sellOrders.peek();
-
-            if(buyOrder.getCryptoSymbol().equals(sellOrder.getCryptoSymbol()) &&
-                    (buyOrder.getAmount().compareTo(sellOrder.getAmount()) == 0) &&
-                    (buyOrder.getPrice().compareTo(sellOrder.getPrice()) >= 0)){
-                executeTransaction(buyOrder,sellOrder);
-                buyOrders.poll();
-                sellOrders.poll();
-            }else{
-                break;
-            }
-        }
-    }
+//    private void matchOrders(){
+//        while(!buyOrders.isEmpty() && !sellOrders.isEmpty()){
+//            BuyOrder buyOrder = buyOrders.peek();
+//            SellOrder sellOrder = sellOrders.peek();
+//
+//            if(buyOrder.getCryptoSymbol().equals(sellOrder.getCryptoSymbol()) &&
+//                    (buyOrder.getAmount().compareTo(sellOrder.getAmount()) == 0) &&
+//                    (buyOrder.getPrice().compareTo(sellOrder.getPrice()) >= 0)){
+//                executeTransaction(buyOrder,sellOrder);
+//                buyOrders.poll();
+//                sellOrders.poll();
+//            }else{
+//                break;
+//            }
+//        }
+//    }
 
 
 
