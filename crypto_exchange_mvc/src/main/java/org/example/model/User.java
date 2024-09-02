@@ -29,11 +29,20 @@ public class User {
         return name;
     }
 
+    public String getEmail(){return email;}
+
+    public Wallet getWallet(){
+        return wallet;
+    }
     public void addTransaction(Transaction transaction){
         transactions.add(transaction);
     }
 
     public List<Transaction> getTransactions(){
         return new ArrayList<>(transactions);
+    }
+
+    public boolean authenticate(String password){
+        return this.password.equals(password);
     }
 }
