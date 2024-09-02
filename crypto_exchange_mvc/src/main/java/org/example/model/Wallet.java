@@ -17,6 +17,12 @@ public class Wallet {
         this.cryptoBalance = new HashMap<>();
     }
 
+    public void initializeWallet(){
+        for (CryptoSymbol cryp : CryptoSymbol.values()){
+            cryptoBalance.put(cryp,new BigDecimal("0.0"));
+        }
+    }
+
     public Map<CryptoSymbol, BigDecimal> getCryptoBalance() {
         return cryptoBalance;
     }
