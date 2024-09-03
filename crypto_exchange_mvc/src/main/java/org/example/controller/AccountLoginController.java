@@ -26,8 +26,7 @@ public class AccountLoginController {
     }
 
     public User getCurrentUser(){
-        return Optional.ofNullable(currentUser).
-                orElseThrow(MissingAccountException::new);
+        return currentUser;
     }
 
     public void execute(){
