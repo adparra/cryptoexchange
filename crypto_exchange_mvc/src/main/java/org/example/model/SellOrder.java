@@ -4,7 +4,7 @@ import java.math.BigDecimal;
 
 public class SellOrder extends Order{
 
-    public SellOrder(User user, String cryptoSymbol, BigDecimal amount, BigDecimal price) {
+    public SellOrder(User user, CryptoSymbol cryptoSymbol, BigDecimal amount, BigDecimal price) {
         super(user, cryptoSymbol, amount, price);
     }
 }

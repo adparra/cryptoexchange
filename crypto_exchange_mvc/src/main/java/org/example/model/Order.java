@@ -8,12 +8,12 @@ public abstract class Order {
     private static final AtomicInteger _ID = new AtomicInteger(0);
     protected final int id;
     protected User user;
-    protected String cryptoSymbol;
+    protected CryptoSymbol cryptoSymbol;
     protected BigDecimal amount;
     protected BigDecimal price;
     protected LocalDateTime creationTime;
 
-    public Order(User user, String cryptoSymbol, BigDecimal amount,
+    public Order(User user, CryptoSymbol cryptoSymbol, BigDecimal amount,
                  BigDecimal price) {
         this.id = _ID.incrementAndGet();
         this.user = user;
@@ -23,7 +23,11 @@ public abstract class Order {
         this.creationTime = LocalDateTime.now();
     }
 
-    public String getCryptoSymbol() {return cryptoSymbol;}
+    public User getUser() {
+        return user;
+    }
+
+    public CryptoSymbol getCryptoSymbol() {return cryptoSymbol;}
 
     public BigDecimal getAmount() {return amount;}
 
