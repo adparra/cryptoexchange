@@ -2,6 +2,7 @@ package org.example.controller;
 
 import org.example.model.User;
 import org.example.model.UserRepository;
+import org.example.view.ConsoleView;
 
 import java.util.Optional;
 
@@ -27,5 +28,15 @@ public class AccountLoginController {
     public User getCurrentUser(){
         return Optional.ofNullable(currentUser).
                 orElseThrow(MissingAccountException::new);
+    }
+
+    public void execute(){
+        String name= view.readString("Enter name");
+        String password= view.readString("Enter password");
+        if (login(name,password)){
+            view.displayMessage("Succesfully logged in");
+        }else{
+            view.displayMessage("Login failed");
+        }
     }
 }

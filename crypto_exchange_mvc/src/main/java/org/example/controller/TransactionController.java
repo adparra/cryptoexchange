@@ -1,6 +1,7 @@
 package org.example.controller;
 
 import org.example.model.User;
+import org.example.view.ConsoleView;
 
 public class TransactionController {
     private ConsoleView view;
@@ -14,4 +15,11 @@ public class TransactionController {
     public String displayTransactions(){
         return user.getTransactions().toString();
     }
+
+    public void execute(){
+        view.displayMessage("Showing all transactions related to the user");
+        displayTransactions();
+    }
+
+
 }
