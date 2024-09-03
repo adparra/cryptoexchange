@@ -18,6 +18,11 @@ public class Exchange {
         }
         return instance;
     }
+    public void initializeExchange(){
+        for (CryptoSymbol cryp : CryptoSymbol.values()){
+            cryptoBalance.put(cryp,new BigDecimal("300.0"));
+        }
+    }
 
     public void sellCrypto(CryptoSymbol cryp, BigDecimal amount){
         if (cryptoBalance.get(cryp).compareTo(amount) >= 0){
