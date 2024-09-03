@@ -1,9 +1,6 @@
 package org.example.controller;
 
-import org.example.model.CryptoSymbol;
-import org.example.model.Exchange;
-import org.example.model.InsufficientFundsException;
-import org.example.model.User;
+import org.example.model.*;
 
 import java.math.BigDecimal;
 
@@ -22,12 +19,12 @@ public class ExchangeController {
         exchange.initializeExchange();
     }
 
-    public void sellCrypto(CryptoSymbol cryp, BigDecimal crypamount,
-                           BigDecimal fiatamount){
+    public void sellCrypto(Cryptocurrency coin,CryptoSymbol cryp, BigDecimal crypamount){
+        BigDecimal price = coin.getCurrentPrice();
+        BigDecimal fiatamount = price.multiply(crypamount);
         user.getWallet().debit(fiatamount);
         exchange.sellCrypto(cryp,crypamount);
         user.getWallet().addCrypto(cryp,crypamount);
-
     }
 
 
